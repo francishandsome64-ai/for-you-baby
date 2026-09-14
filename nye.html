@@ -1,0 +1,765 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For You, My Love 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Pacifico&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: #ffe0e9;
+    color: #713b4d;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+button, input {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* FLOATING HEARTS */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.heart {
+    position: absolute;
+    bottom: -30px;
+    color: rgba(255, 105, 145, 0.35);
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* LOGIN SCREEN */
+
+#login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 360px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(170, 70, 105, 0.18);
+    animation: cardAppear 0.8s ease;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.login-card h1 {
+    font-family: 'Pacifico', cursive;
+    color: #d94c78;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.login-card p {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+#secretCode {
+    width: 100%;
+    padding: 13px;
+    border: 2px solid #e98ba8;
+    border-radius: 12px;
+    text-align: center;
+    outline: none;
+    background: #fff7fa;
+    color: #713b4d;
+    font-size: 16px;
+}
+
+#secretCode:focus {
+    border-color: #d94c78;
+}
+
+.main-btn {
+    border: none;
+    background: #d94c78;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    margin-top: 15px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.main-btn:active {
+    transform: scale(0.95);
+}
+
+#error {
+    color: #d43c61;
+    font-size: 13px;
+    margin-top: 12px;
+    display: none;
+}
+
+/* MAIN WEBSITE */
+
+#website {
+    display: none;
+    position: relative;
+    z-index: 1;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(135deg, #ed789a, #f49bb4);
+    color: white;
+    text-align: center;
+    padding: 38px 15px 25px;
+}
+
+header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(25px, 7vw, 38px);
+    text-shadow: 1px 2px 3px rgba(120, 40, 70, 0.15);
+}
+
+header p {
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* NAVIGATION */
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    flex-wrap: wrap;
+    padding: 15px 10px;
+    background: #f7b3c6;
+}
+
+.nav button {
+    border: none;
+    border-radius: 18px;
+    background: #fff4f7;
+    color: #a94567;
+    padding: 10px 13px;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: 0 3px 8px rgba(130, 50, 80, 0.08);
+    transition: 0.2s;
+}
+
+.nav button.active {
+    background: #d94c78;
+    color: white;
+}
+
+.nav button:active {
+    transform: scale(0.94);
+}
+
+/* CONTENT */
+
+.container {
+    width: 92%;
+    max-width: 800px;
+    margin: 25px auto;
+}
+
+.section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    font-family: 'Pacifico', cursive;
+    color: #d94c78;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.88);
+    padding: 22px;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(170, 70, 105, 0.10);
+    margin-bottom: 15px;
+}
+
+/* HOME */
+
+.home-message {
+    text-align: center;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.big-heart {
+    font-size: 70px;
+    display: block;
+    animation: beat 1.4s infinite;
+    margin: 10px;
+}
+
+@keyframes beat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* LOVE LETTER */
+
+.letter {
+    line-height: 1.8;
+    font-size: 14px;
+    white-space: pre-line;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 18px;
+    font-family: 'Pacifico', cursive;
+    color: #d94c78;
+}
+
+/* YOUTUBE MUSIC */
+
+.youtube-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #f7b3c6;
+}
+
+.youtube-player iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.music-title {
+    margin-top: 15px;
+    color: #d94c78;
+    font-size: 17px;
+}
+
+.music-description {
+    font-size: 13px;
+    margin-top: 5px;
+    line-height: 1.6;
+}
+
+/* NOTES */
+
+.note {
+    border-left: 4px solid #e76c91;
+    background: #fff7fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+/* GALLERY */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.gallery-placeholder {
+    aspect-ratio: 1 / 1;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #ffc1d2, #fff0f5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    border: 3px solid white;
+    box-shadow: 0 3px 10px rgba(130, 50, 80, 0.1);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    color: #a66a7d;
+    font-size: 12px;
+}
+
+/* SMALL PHONES */
+
+@media (max-width: 360px) {
+    .nav button {
+        padding: 9px 10px;
+        font-size: 10px;
+    }
+
+    .card {
+        padding: 17px;
+    }
+
+    .login-card {
+        padding: 30px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS -->
+
+<div class="hearts" id="hearts"></div>
+
+<!-- SECRET CODE SCREEN -->
+
+<section id="login">
+
+    <div class="login-card">
+
+        <h1>For Someone Special 💗</h1>
+
+        <p>
+            Enter the secret code to open your surprise.
+        </p>
+
+        <input
+            type="password"
+            id="secretCode"
+            placeholder="Enter secret code"
+        >
+
+        <button class="main-btn" onclick="unlock()">
+            Open Surprise 💌
+        </button>
+
+        <p id="error">
+            Wrong code. Try again, love! 💗
+        </p>
+
+    </div>
+
+</section>
+
+<!-- MAIN WEBSITE -->
+
+<section id="website">
+
+    <header>
+
+        <h1>Dearest, My Love 💗</h1>
+
+        <p>
+            A little website made especially for you
+        </p>
+
+    </header>
+
+    <!-- NAVIGATION -->
+
+    <nav class="nav">
+
+        <button class="active" onclick="showSection('home', this)">
+            💗 Home
+        </button>
+
+        <button onclick="showSection('letter', this)">
+            💌 Love Letter
+        </button>
+
+        <button onclick="showSection('music', this)">
+            🎵 Music
+        </button>
+
+        <button onclick="showSection('notes', this)">
+            📝 Notes
+        </button>
+
+        <button onclick="showSection('gallery', this)">
+            🌷 Gallery
+        </button>
+
+    </nav>
+
+    <main class="container">
+
+        <!-- HOME SECTION -->
+
+        <section id="home" class="section active">
+
+            <h2 class="section-title">
+                Welcome, My Love 🌸
+            </h2>
+
+            <div class="card home-message">
+
+                <span class="big-heart">💗</span>
+
+                <p>
+                    This little website is made just for you.
+                    Every page holds a small reminder of how
+                    special you are to me.
+                </p>
+
+                <br>
+
+                <p>
+                    Thank you for being part of my life.
+                    I hope this simple surprise makes you smile.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- LOVE LETTER SECTION -->
+
+        <section id="letter" class="section">
+
+            <h2 class="section-title">
+                A Letter For You 💌
+            </h2>
+
+            <div class="card letter">
+
+To my favorite person,
+
+I just want you to know how happy I am that I got the chance to meet you.
+
+Even the simplest moments with you are special to me. Every conversation, every laugh, and every memory means more than you might realize.
+
+I may not always know the perfect words to say, but I hope you can feel how much I appreciate you.
+
+Thank you for being you.
+
+I hope this little surprise reminds you that you are special and loved.
+
+Always cheering for you. 💗
+
+                <div class="signature">
+                    With love, Francis 🌷
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- MUSIC SECTION -->
+
+        <section id="music" class="section">
+
+            <h2 class="section-title">
+                Songs For You 🎵
+            </h2>
+
+            <div class="card">
+
+                <p style="font-size:14px; margin-bottom:15px;">
+                    A song that reminds me of you. 💗
+                </p>
+
+                <div class="youtube-player">
+
+                    <iframe
+                        src="https://www.youtube.com/embed/Rj3hEAOyZqQ"
+                        title="A Song That Reminds Me of You"
+                        allow="autoplay; encrypted-media; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+                <h3 class="music-title">
+                    A Song That Reminds Me of You 🎶
+                </h3>
+
+                <p class="music-description">
+                    Every song sounds better when it reminds me of you. 💌
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- NOTES SECTION -->
+
+        <section id="notes" class="section">
+
+            <h2 class="section-title">
+                Little Reminders 📝
+            </h2>
+
+            <div class="card">
+
+                <div class="note">
+                    💗 You are more special than you think.
+                </div>
+
+                <div class="note">
+                    🌷 Don't forget to smile today.
+                </div>
+
+                <div class="note">
+                    🌙 Rest when you are tired.
+                </div>
+
+                <div class="note">
+                    ✨ Keep chasing your dreams.
+                </div>
+
+                <div class="note">
+                    💌 I am always cheering for you.
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- GALLERY SECTION -->
+
+        <section id="gallery" class="section">
+
+            <h2 class="section-title">
+                Flowers For You 🌷
+            </h2>
+
+            <div class="card">
+
+                <div class="gallery">
+
+                    <div class="gallery-placeholder">
+                        🌹
+                    </div>
+
+                    <div class="gallery-placeholder">
+                        🌷
+                    </div>
+
+                    <div class="gallery-placeholder">
+                        🌸
+                    </div>
+
+                    <div class="gallery-placeholder">
+                        🌻
+                    </div>
+
+                    <div class="gallery-placeholder">
+                        💐
+                    </div>
+
+                    <div class="gallery-placeholder">
+                        🌺
+                    </div>
+
+                </div>
+
+                <p style="text-align:center; margin-top:15px; font-size:13px;">
+                    Replace these flowers with your favorite pictures together. 💗
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        Made with love 💗 | For someone special
+    </footer>
+
+</section>
+
+<script>
+
+/* =========================
+   SECRET CODE
+========================= */
+
+/* CHANGE YOUR SECRET CODE HERE */
+
+const correctCode = "jezreen";
+
+function unlock() {
+
+    const code = document.getElementById("secretCode").value;
+
+    const error = document.getElementById("error");
+
+    if (code.toLowerCase() === correctCode.toLowerCase()) {
+
+        document.getElementById("login").style.display = "none";
+
+        document.getElementById("website").style.display = "block";
+
+        error.style.display = "none";
+
+    } else {
+
+        error.style.display = "block";
+
+    }
+
+}
+
+/* PRESS ENTER TO UNLOCK */
+
+document.getElementById("secretCode").addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter") {
+
+        unlock();
+
+    }
+
+});
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function showSection(sectionId, button) {
+
+    document.querySelectorAll(".section").forEach(function(section) {
+
+        section.classList.remove("active");
+
+    });
+
+    document.getElementById(sectionId).classList.add("active");
+
+    document.querySelectorAll(".nav button").forEach(function(btn) {
+
+        btn.classList.remove("active");
+
+    });
+
+    button.classList.add("active");
+
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function createHeart() {
+
+    const heart = document.createElement("span");
+
+    heart.className = "heart";
+
+    const symbols = ["💗", "♡", "♥", "🌸"];
+
+    heart.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + "%";
+
+    heart.style.fontSize =
+        (12 + Math.random() * 18) + "px";
+
+    heart.style.animationDuration =
+        (7 + Math.random() * 6) + "s";
+
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(function() {
+
+        heart.remove();
+
+    }, 14000);
+
+}
+
+/* CREATE HEARTS */
+
+setInterval(createHeart, 700);
+
+for (let i = 0; i < 8; i++) {
+
+    setTimeout(createHeart, i * 300);
+
+}
+
+</script>
+
+</body>
+  </html>
+  
